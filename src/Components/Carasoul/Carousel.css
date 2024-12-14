@@ -1,189 +1,124 @@
-.carousel-container {
-    margin: 0;
-    display: grid;
-    grid-template-rows: 500px auto;
-    grid-template-columns: 1fr;
-    align-items: center;
-    justify-items: center;
-    font-family: 'Poppins', sans-serif;
-    background-color: rgb(229, 123, 31) !important;
-    background-image: linear-gradient(-180deg, rgb(197, 89, 89), rgb(158, 96, 73));
-}
-
-main#carousel {
-    grid-row: 1 / 2;
-    grid-column: 1 / 2;
-    height: 300px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+.carousel-wrapper {
+    position: relative;
+    width: 100%;
     overflow: hidden;
-    transform-style: preserve-1d;
-    perspective: 600px;
-    pointer-events: none;
-    background-color: rgb(229, 123, 31) !important;
-    background-image: linear-gradient(-180deg, #0d0101, rgb(46, 22, 13));
-    /* Initial slight left shift for first load */
-    transform: translateX(-50px);
+    margin: 2rem auto;
+    /* Default (small screens): 1 card */
+    max-width: 400px;
 }
 
-.item {
+.carousel-container {
+    overflow: hidden;
+}
+
+.carousel-track {
+    display: grid;
+    grid-auto-flow: column;
+    /* Default for small screens: 1 card fits the entire width */
+    grid-auto-columns: 100%;
+    gap: 0;
+    transition: transform 0.3s ease-in-out;
+    align-items: stretch;
+}
+
+.carousel-item {
+    background-color: #0a0a0a;
+    color: #fff;
     text-align: center;
-    background-color: #fff !important;
     padding: 20px;
-    border: 3px solid black;
+    box-sizing: border-box;
     border-radius: 20px;
-    background-color: #0a0a0a !important;
-    position: absolute;
-    width: 320px;
-    height: 260px;
-    --r: calc(var(--position) - var(--offset));
-    --abs: max(calc(var(--r) * -1), var(--r));
-    transition: all 0.25s linear;
-
-    /* Adjusting the transform to keep slides aligned */
-    transform: rotateY(calc(0deg * var(--r))) translateX(calc(-380px * var(--r))) translateX(-50px);
-    z-index: calc((var(--position) - var(--abs)));
-}
-
-
-
-.name {
-    margin-bottom: 2px;
-    color: #8c52ff;
-}
-
-.occupation {
-    font-style: italic;
-    margin-top: 2px;
-}
-
-.controls {
     display: flex;
-    gap: 20px;
-}
-
-.controls button {
-    padding: 10px 20px;
-    background-color: #8c52ff;
-    color: white;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    font-size: 16px;
-    transition: background-color 0.3s ease;
-}
-
-.controls button:hover {
-    background-color: #6c42cc;
+    flex-direction: column;
+    justify-content: center;
+    min-height: 350px;
 }
 
 .testimonial {
-    font-family: "Roboto";
-    background-color: rgb(9, 9, 9);
-    color: #fff;
-    padding: 10px;
-}
-
-.testimonial div {
-    background-color: #070303 !important;
+    margin-bottom: 1rem;
 }
 
 .user {
-    background-color: #0a0909 !important;
     display: flex;
     align-items: center;
-    margin: 10px;
+    justify-content: flex-start;
+    gap: 1rem;
+    background-color: #0a0909;
+    border-radius: 10px;
+    padding: 1rem;
 }
 
 .user img {
-    width: 50px;
-    height: 50px;
+    width: 80px;
+    height: 80px;
     border-radius: 50%;
 }
 
 .user_inner {
-    background-color: #090808 !important;
-    margin: 10px;
+    background-color: #090808;
+    padding: 0.5rem;
+    border-radius: 5px;
+    text-align: left;
 }
 
 .stp {
-    background-color: #070707;
-    color: rgb(241, 236, 236);
+    color: #f1ecec;
     font-family: "Roboto";
-    text-align: left;
+    margin: 0;
+    font-size: 1.2rem;
 }
 
 .ndp {
-    background-color: #0b0b0b;
-    text-align: left;
-    color: rgb(237, 228, 228);
+    color: #ede4e4;
     font-family: "Roboto";
-
+    margin: 0.25rem 0 0 0;
+    font-size: 1.1rem;
 }
 
-
-
-/* At max-width of 1025px, show two items in a row */
-@media (max-width: 1025px) {
-    .carousel-container {
-        display: grid;
-        grid-template-columns: repeat(3, 1fr); /* Two items per row */
+/* ----- Breakpoints ----- */
+/* Extra Large (≥1600px): 4 cards */
+@media (min-width: 1600px) {
+    .carousel-wrapper {
+        max-width: 1460px; /* 4 cards: (350px *4) + (20px *3) = 1460px */
+    }
+    .carousel-track {
+        grid-auto-columns: 350px;
         gap: 20px;
-        width: 100%;
-        margin-top: 50px;
-    }
-
-    main#carousel {
-        height: 400px;
-        perspective: 500px;
-    }
-
-    .item {
-        width: 250px;
-        height: 300px;
-        transform: rotateY(calc(0deg * var(--r))) translateX(calc(-300px * var(--r))) translateX(-40px);
-        
-    }
-
-    .item img {
-        width: 80px;
-        height: 80px;
     }
 }
 
-/* Responsive Styles */
-@media (max-width: 750px) {
-    main#carousel {
-        height: 450px;
-        perspective: 500px;
+/* Large (≥1200px and <1600px): 3 cards */
+@media (min-width: 1200px) and (max-width: 1599px) {
+    .carousel-wrapper {
+        max-width: 1260px; /* 3 cards: (400px *3) + (30px *2) = 1260px */
     }
-    .item {
-        height: 350px;
-        perspective: 500px;
-    }
-
-    .item img {
-        width: 80px;
-        height: 80px;
+    .carousel-track {
+        grid-auto-columns: 400px;
+        gap: 30px;
     }
 }
 
-@media (max-width: 480px) {
-    main#carousel {
-        height: 500px;
-        perspective: 400px;
-        transform: translateX(-30px);
+/* Medium (≥768px and <1200px): 2 cards */
+@media (min-width: 768px) and (max-width: 1199px) {
+    .carousel-wrapper {
+        max-width: 860px; /* 2 cards: (400px *2) + (30px *1) = 830px, a bit extra */
     }
-
-    .item {
-        width: 200px;
-        height: 350px;
-        transform: rotateY(calc(0deg * var(--r))) translateX(calc(-250px * var(--r))) translateX(-30px);
+    .carousel-track {
+        grid-auto-columns: 400px;
+        gap: 30px;
     }
+}
 
-    .item img {
-        width: 60px;
-        height: 60px;
+/* Small (<768px): 1 card */
+@media (max-width: 767px) {
+    .carousel-wrapper {
+        width: 90%;        /* Take less than full width to add spacing */
+        max-width: 400px;  /* Cap the width at 400px */
+        margin: 0 auto;    /* Center it horizontally */
+        padding: 0 1rem;   /* Add some horizontal padding for spacing */
+    }
+    .carousel-track {
+        grid-auto-columns: 100%;
+        gap: 0;
     }
 }

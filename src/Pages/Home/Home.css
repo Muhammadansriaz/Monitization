@@ -1,181 +1,267 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;700&display=swap');
 
-.Content {
-    display: flex;
-    justify-content: space-around;
-    text-align: center;
-    margin-top: 50px;
-    color: white;
-}
-
-.Content_Inner {
-    padding-top: 80px;
-    width: 500px;
-    height: 400px;
-    text-align: left;
-
-    gap: 20px;
-
-}
-
-.Content_Inner h1 {
-    font-size: 65px;
-    font-family: Roboto;
-    font-weight: 600;
-}
-
-
-.Content_Inner p {
-    line-height: 25px;
-    font-size: 15px;
-    font-family: Roboto;
-
-}
-
-.Group_1 {
-    width: 500px;
-    height: 500px;
-    /* animation: rotate 5s linear infinite; */
-    /* 5s for rotation duration */
-}
-
-.Destop {
-    width: 650px;
-    height: 435px;
-}
-
-@keyframes rotate {
-    0% {
-        transform: rotate(0deg);
-    }
-
-    100% {
-        transform: rotate(360deg);
-    }
-}
-
-.Inner_Box {
-    width: 95%;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-top: 10px;
-    padding: 5px;
-    border: 1px solid orangered;
-    border-radius: 50px;
-    background-color: #161515;
-
-}
-
-.Inner_Box div {
-    color: white;
-    padding: 17px;
-    text-align: center;
-    width: 24%;
-    background-color: orangered;
-    border-radius: 50px;
-}
-
-.Inner_Box p {
-    background-color: #161515;
-
-}
-
-.Discover {
-    display: flex;
-    justify-content: space-around;
-    text-align: center !important;
-    margin: 5px 80px 80px 130px;
-    color: white;
-}
-
-.Discover_Inner {
-    text-align: left;
-    padding-top: 80px;
-    width: 700px;
-    height: 400px;
-    gap: 20px;
-
-}
-
-.Discover_Inner h1 {
-    font-size: 65px;
-    font-family: Roboto;
-}
-
-.Discover_Inner p {
-    line-height: 30px;
-    font-size: 17px;
-    font-family: Roboto;
-
-}
-
-.dsc {
-    margin-bottom: -40px;
-    font-size: 25px;
-}
-
-.st_div {
-    display: block;
-    margin: auto;
-}
-
-.Student {
-    display: block;
-    margin: auto;
-    width: 300px;
-    height: 350px;
-}
-
-.Inner_Box_2 {
-    width: 60%;
-    display: flex;
-    justify-content: flex-start;
-    align-items: center;
-    margin-top: 10px;
-    padding: 10px;
-    /* border: 1px solid rgb(230, 109, 3); */
-    border-radius: 50px;
-}
-
-.Inner_Box_2 p {
-    margin-right: 10px;
-    font-size: 25px;
-
-}
-
-.About {
-    display: flex;
-    justify-content: space-around;
-    text-align: center;
-    margin: 120px;
-    color: white;
-}
-
-.About_Inner {
-    text-align: left;
-    padding-top: 80px;
-    width: 600px;
-    height: 400px;
-
-}
-
-.abouth1 {
-    margin-bottom: 10px !important;
-    font-size: 70px;
-
+body {
+    background: #000;
+    color: #fff;
+    font-family: 'Roboto', sans-serif;
 }
 
 .org {
     color: orangered;
 }
 
-.abt {
-    margin-bottom: -40px;
-    font-size: 20px;
-
+/* -----------------------------------------------------------
+   CONTENT SECTION
+   ----------------------------------------------------------- */
+.Content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    margin-top: 50px;
+    padding: 2rem 1rem;
+    /* Base horizontal padding */
 }
 
+@media (min-width: 768px) {
+    .Content {
+        flex-direction: row;
+        justify-content: space-around;
+        text-align: left;
+        padding: 2rem 4rem;
+        /* More horizontal space on larger screens */
+    }
+}
+
+.Content_Inner {
+    padding-top: 80px;
+    width: 100%;
+    max-width: 500px;
+}
+
+.Content_Inner h1 {
+    font-size: clamp(2rem, 5vw, 4rem);
+    font-weight: 600;
+}
+
+.Content_Inner p {
+    line-height: 1.5;
+    font-size: 1rem;
+}
+
+.Group_1 {
+    width: 80vw;
+    max-width: 500px;
+    height: auto;
+    margin-top: 20px;
+    object-fit: contain;
+}
+
+.Inner_Box {
+    display: flex;
+    flex-direction: column;
+    background-color: #161515;
+    border: 1px solid orangered;
+    border-radius: 50px;
+    padding: 0.5rem;
+    margin-top: 1rem;
+    gap: 1rem;
+}
+
+@media (min-width: 500px) {
+    .Inner_Box {
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+    }
+}
+
+.Inner_Box p {
+    margin: 0;
+    flex: 1;
+}
+
+/* Bigger "Get notified" button */
+.Inner_Box div {
+    background-color: orangered;
+    color: #fff;
+    border-radius: 50px;
+    padding: 1rem 2rem;
+    font-size: 1.25rem;
+    text-align: center;
+    cursor: pointer;
+    white-space: nowrap;
+}
+
+/* -----------------------------------------------------------
+   DISCOVER SECTION
+   ----------------------------------------------------------- */
+.Discover {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    color: #fff;
+    gap: 2rem;
+    margin-top: 2rem;
+    padding: 2rem 1rem;
+    /* Base horizontal padding */
+}
+
+@media (min-width: 768px) {
+    .Discover {
+        flex-direction: row;
+        justify-content: space-around;
+        text-align: left;
+        padding: 2rem 4rem;
+        /* More horizontal space on larger screens */
+    }
+
+    .Discover_Inner h1 {
+        font-size: clamp(4rem, 5vw, 3.5rem);
+        line-height: 1.2;
+        margin-top: 0;
+    }
+}
+
+.Discover_Inner {
+    display: flex;
+    flex-direction: column;
+    /* gap: 0.5rem; */
+    /* Reduced from 1rem to 0.5rem */
+    max-width: 700px;
+    width: 100%;
+}
+
+.Discover_Inner h5 {
+    margin-bottom: 0.5rem;
+    /* Adjust this for desired spacing */
+}
+
+
+.Discover_Inner h5 {
+    margin-bottom: 0.5rem;
+    font-size: 1.5rem; /* Increase this to your desired size */
+    font-weight: 700;  /* Optional for a bolder look */
+}
+
+.Discover_Inner p {
+    font-size: 1rem;
+    line-height: 1.5;
+}
+
+.Inner_Box_2 {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    border-radius: 50px;
+    padding: 0.75rem 1rem;
+    width: fit-content;
+    cursor: pointer;
+}
+
+.st_div {
+    display: flex;
+    justify-content: center;
+}
+
+.Student {
+    width: 60vw;
+    max-width: 300px;
+    height: auto;
+    object-fit: contain;
+    margin-top: 1rem;
+}
+
+@media (max-width: 450px) {
+    .Student {
+        width: 80vw;
+        max-width: 250px;
+    }
+}
+
+/* -----------------------------------------------------------
+   ABOUT SECTION
+   ----------------------------------------------------------- */
+/* Reduced vertical space before About section */
+.About {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    color: #fff;
+    gap: 2rem;
+    padding: 2rem 1rem;
+    /* Base horizontal padding for mobile */
+    margin: 2rem auto;
+    /* Center it horizontally */
+    max-width: 1200px;
+    /* Optional: limit max width for consistent layout */
+}
+
+@media (min-width: 768px) {
+    .About {
+        flex-direction: row;
+        justify-content: space-around;
+        text-align: left;
+        padding: 2rem 4rem;
+        /* Same as Content and Discover */
+        margin: 2rem auto;
+        /* Keep centered on larger screens */
+    }
+}
+.About_Inner {
+    max-width: 700px;
+    margin: 0 auto; /* center the content */
+}
+
+.About_Inner h5 {
+    margin-bottom: 0.5rem;
+    font-size: 1.5rem; /* Increase this as desired */
+    font-weight: 700;  /* Optional for a bolder look */
+}
+
+.abouth1 {
+    margin-top: 0;
+    font-size: clamp(2rem, 5vw, 4rem);
+    margin-bottom: 1rem;
+    line-height: 1.2;
+}
+
+.about_p {
+    font-size: 1rem;
+    line-height: 1.5;
+    max-width: 40ch; /* adjust until you get exactly three lines */
+    text-align: left;
+}
+
+.Destop {
+    width: 80vw;
+    max-width: 650px;
+    height: auto;
+    object-fit: contain;
+}
+
+/* Between 1000px and 700px: Adjust the image size */
+@media (max-width: 1000px) and (min-width: 700px) {
+    .Destop {
+        width: 75vw;
+        max-width: 500px; /* Slightly smaller for medium screens */
+    }
+}
+
+/* Below 450px: Further adjust for smaller screens */
+@media (max-width: 450px) {
+    .Destop {
+        width: 80vw;
+        max-width: 350px;
+    }
+}
+
+
+/* -----------------------------------------------------------
+   FEED SECTION
+   ----------------------------------------------------------- */
 .Feed {
     display: flex;
     justify-content: space-between;
@@ -183,43 +269,88 @@
     color: white;
     width: 80%;
     margin: auto;
+    margin-top: 3rem;
+    margin-bottom: 3rem;
 }
 
-.Feed_Inner {
-    text-align: left;
+.Feed_Inner h1 {
+    font-size: 2rem;
+}
 
+.Controls {
+    display: flex;
+    gap: 1rem;
 }
 
 .Arrow {
     color: orangered;
-    margin: 10px;
     border: 1px solid orangered;
     border-radius: 50%;
     padding: 10px;
     cursor: pointer;
 }
 
+/* -----------------------------------------------------------
+   FEATURES SECTION
+   ----------------------------------------------------------- */
 .Features {
     color: white;
-    display: block;
     text-align: center;
     margin-top: 50px;
+    font-size: clamp(2rem, 5vw, 3rem);
 }
 
 .grid-container {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    /* Always three columns */
-    gap: 20px;
-    padding: 20px;
-    margin: 100px;
+    /* 3 columns by default */
+    gap: 30px;
+    /* Increase the gap between grid items */
+    padding: 40px 2rem;
+    /* More padding around the entire grid */
+    margin: 100px 2rem;
+    /* Increase horizontal margin for more breathing room */
 }
 
 .grid-item {
-
-    border-radius: 8px;
-
+    /* background-color: #0a0a0a; */
+    /* Optional if you want contrast */
+    padding: 20px;
+    /* Space inside each grid item */
+    border-radius: 10px;
+    /* Rounded corners if desired */
     text-align: center;
+    /* Center content if you like */
+}
+
+.feature_img {
+    max-width: 95%;
+    /* Make the image smaller */
+    height: auto;
+    margin: 0 auto;
+    /* Center the image horizontally */
+    display: block;
+    /* Ensure it respects margin auto */
+    object-fit: contain;
+}
+
+
+/* For medium screens, reduce to 2 columns */
+@media (max-width: 1024px) {
+    .grid-container {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+/* For small screens, reduce to 1 column */
+@media (max-width: 768px) {
+    .grid-container {
+        grid-template-columns: 1fr;
+        padding: 20px 1rem;
+        /* Slightly less padding on small screens */
+        margin: 50px 1rem;
+        /* Less margin on small screens */
+    }
 }
 
 .feature {
@@ -227,351 +358,88 @@
     text-align: left;
 }
 
-.feature_img {
-    width: 370px;
-    height: 180px;
-}
-
 .feature_name {
-    margin: 5px;
+    margin: 0.5rem 0;
+    font-weight: 700;
+    font-size: 1.25rem; /* Increase this to your desired size */
 }
 
 .feature_p {
-    margin: 5px;
+    margin: 0.5rem 0;
+    font-size: 1rem;
 }
 
-.Faq_outr {
-    margin: 30px;
-    text-align: center;
-    display: flex;
-    justify-content: space-around;
-}
-
+/* -----------------------------------------------------------
+   FAQ SECTION
+   ----------------------------------------------------------- */
 .faq_h1 {
     color: white;
     text-align: center;
-    margin: 80px;
+    margin: 80px 0;
 }
 
-.started {
+.Faq_outr {
+    margin: 30px 1rem;
+    display: flex;
+    justify-content: space-around;
+    text-align: center;
+}
+
+/* -----------------------------------------------------------
+   GET STARTED SECTION
+   ----------------------------------------------------------- */
+   .started {
     margin-top: 40px;
-    background-color: rgb(65, 59, 59);
-    background-image: linear-gradient(-401deg, rgb(65, 59, 59), rgb(46 23 14));
-    width: 100%;
-    height: 300px;
+    background-image: linear-gradient(-401deg, rgb(65, 59, 59), rgb(46, 23, 14));
+    width: 95%;
+    margin: 40px auto;
     color: white;
     display: flex;
     justify-content: center;
     align-items: center;
-
+    text-align: center;
+    padding: 2rem 1rem;
+    box-sizing: border-box;
+    min-height: 400px; /* Increase this value as desired */
 }
 
 .Started_main {
-    text-align: center;
-
-
+    max-width: 700px;
+    width: 100%;
+    margin: 0 auto;
 }
 
+
+
 .Started_main h1 {
-    font-size: 45px;
+    font-size: clamp(1.5rem, 5vw, 2.8rem);
+    margin-bottom: 1rem;
+    line-height: 1.2;
 }
 
 .Started_main p {
-    font-size: 25px;
+    font-size: clamp(1rem, 3.5vw, 1.2rem);
+    margin-bottom: 1.5rem;
+    line-height: 1.4;
 }
 
 .Started_main div {
     background-color: orangered;
     border-radius: 10px;
-    width: 25%;
-    text-align: center;
-    margin: auto;
-    padding: 17px;
-    box-shadow: 0px 2px 20px -7px;
+    width: fit-content;
+    margin: 0 auto;
+    padding: 0.75rem 1.5rem;
+    box-shadow: 0px 2px 20px -7px rgba(0, 0, 0, 0.5);
+    cursor: pointer;
+    font-size: clamp(0.9rem, 2.5vw, 1rem);
 }
 
-.about_p {
-    font-size: 22px;
-}
-
-@media screen and (max-width: 1025px) {
-    .Content {
-        display: inline;
-        flex-direction: column;
-
+/* Optional: Adjust spacing for very small screens */
+@media (max-width: 500px) {
+    .started {
+        padding: 1.5rem 0.5rem;
     }
-
-    .Content_Inner {
-        position: relative;
-        margin: auto;
-        margin-bottom: 80px;
+    .Started_main p {
+        margin-bottom: 1rem;
     }
-
-    .Inner_Box {
-        width: auto;
-        margin: auto;
-    }
-
-    .Discover {
-        display: flex;
-        flex-direction: column;
-        justify-content: space-around;
-        text-align: center !important;
-        margin: 5px 80px 80px 130px;
-        color: white;
-    }
-
-    .st_div {
-        margin-top: 150px;
-    }
-
-    .About {
-        display: flex;
-        flex-direction: column;
-        justify-content: space-around;
-        text-align: center;
-        margin: 120px;
-        color: white;
-    }
-
-    .Feed {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        color: white;
-        width: 80%;
-        margin: auto;
-        margin-bottom: 50px;
-    }
-
-    .grid-container {
-        grid-template-columns: repeat(2, 1fr);
-        margin: 40px;
-        /* Two columns for smaller screens */
-    }
-
-    .feature_img {
-        width: 350px;
-        height: 200px
-    }
-
-}
-
-@media screen and (max-width: 750px) {
-    .Content_Inner {
-        padding-top: 40px;
-        width: 320px;
-        height: 500px;
-        gap: 20px;
-    }
-
-    .Inner_Box div {
-        color: white;
-        padding: 20px;
-        text-align: center;
-        width: 34%;
-        background-color: orangered;
-        border-radius: 50px;
-    }
-
-    .Group_1 {
-        width: 400px;
-        height: 400px;
-        margin-top: 50px;
-    }
-
-    .Discover {
-        display: flex;
-        flex-direction: column;
-    }
-
-    .Discover_Inner {
-        text-align: left;
-        padding-top: 80px;
-        width: 320px;
-        height: 400px;
-        /* gap: 20px; */
-        margin-bottom: 70px;
-
-
-    }
-
-    .About {
-        display: flex;
-        flex-direction: column;
-        justify-content: space-around;
-        text-align: center;
-        margin-top: 120px;
-        color: white;
-    }
-
-    .About_Inner {
-        font-family: Roboto !important;
-
-        margin: auto;
-        text-align: left;
-        padding-top: 80px;
-        width: 430px;
-        height: 400px;
-
-    }
-
-
-
-    .Destop {
-        margin-top: 150px;
-        width: 400px;
-        height: 300px;
-    }
-
-    .Feed {
-        display: flex;
-        flex-direction: column;
-    }
-
-    .Arrow {
-
-        padding: 10px;
-
-    }
-
-    .grid-container {
-        grid-template-columns: repeat(2, 1fr);
-        /* Two columns for smaller screens */
-    }
-
-    .feature_img {
-        width: 300px;
-        height: 150px
-    }
-
-    .Student {
-        display: block;
-        margin-top: 250px;
-        /* margin: auto; */
-        width: 300px;
-        height: 350px;
-    }
-
-}
-
-@media screen and (max-width: 450px) {
-    .Content_Inner {
-        padding-top: 40px;
-        width: 300px;
-        height: 500px;
-        gap: 20px;
-    }
-
-    .Group_1 {
-        margin-top: 70px;
-        width: 250px;
-        height: 250px;
-    }
-
-    .Inner_Box {
-        display: flex;
-
-        width: 100%;
-        margin: 5px 5px 5px 5px;
-
-    }
-
-    .Inner_Box div {
-        color: white;
-        padding: 20px;
-        text-align: center;
-        width: 34%;
-        background-color: orangered;
-        border-radius: 50px;
-    }
-
-    .Content_Inner p {
-        margin: 5px 5px 5px 5px;
-    }
-
-    .Inner_Box div {
-        margin: 5px 5px 5px 5px;
-
-    }
-
-    .Student {
-        display: block;
-        margin-top: 20px;
-        /* margin: auto; */
-        width: 250px;
-        height: 300px;
-    }
-
-    .Discover {
-        display: flex;
-        flex-direction: column;
-        justify-content: space-around;
-        text-align: center !important;
-        margin: 5px 6px 11px 28px;
-        color: white;
-    }
-
-    .Discover_Inner {
-        text-align: left;
-        padding-top: 80px;
-        width: 100%;
-        height: fit-content;
-
-
-    }
-
-    .Discover_Inner h1 {
-        font-size: 40px;
-
-    }
-
-    .dsc {
-        margin-bottom: -20px;
-        font-size: 15px;
-    }
-    .Destop {
-        margin-top: 150px;
-        width: 350px;
-        height: 300px;
-    }
-
-
-    .st_div {
-        margin-top: 15px;
-    }
-
-    .About_Inner {
-        margin: auto;
-        text-align: left;
-        padding-left: 40px;
-        width: 100%;
-        height: fit-content;
-    }
-
-    .about_p {
-        font-size: 15px;
-    }
-
-    .grid-container {
-        grid-template-columns: 1fr;
-        /* One column for very small screens */
-    }
-
-    .abt {
-        margin-bottom: 17px;
-        font-size: 16px;
-    }
-
-    .About {
-        margin: 0;
-        width: 100%;
-        height: fit-content;
-    }
-
-    .abouth1 {
-        margin-bottom: 0px !important;
-        font-size: 44px;
-    }
-
 }

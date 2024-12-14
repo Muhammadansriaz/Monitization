@@ -1,73 +1,65 @@
 import React from "react";
-import User_1 from"../Images/Usewr_1.png"
-import User_2 from "../Images/User_2.png"
-import User_3 from "../Images/User_3.png"
 import "./Carousel.css";
 
-const Carousel = ({ position }) => {
-    const slides = [
-        {
-            img: User_1,
-            name: "Hellen JUmmy",
-            occupation: "Financial Counsoler",
-            testimonial: "Lacus vestibulum ultricies mi risus, duis non, volutpat nullam non. Magna congue nisi maecenas elit aliquet eu sed consectetur. Vitae quis cras vitae praesent morbi adipiscing purus consectetur mi.",
-        },
-        {
-            img: User_2,
-            name: "Michael John",
-            occupation: "Cybersecurity Engineer",
-            testimonial: "Odio rhoncus ornare ut quam. Molestie vel duis quis scelerisque ut id. In tortor turpis viverra sagittis ultrices nisi, nec tortor. Vestibulum, ultrices ultricies neque, hac ultricies dolor..",
-        },
-        {
-            img: User_3,
-            name: "Mikayla Eddie",
-            occupation: "Software Engineer",
-            testimonial: "Sagittis nunc egestas leo et malesuada urna risus. Morbi proin et cras aliquam. Diam tellus, amet, hac imperdiet. Tellus mi volutpat tellus, congue malesuada sit nisl donec a.",
-        },
-        {
-            img: "./images/4.jpg",
-            name: "Eve Smith",
-            occupation: "UI/UX Designer",
-            testimonial: "Sapien, sollicitudin et vitae id et laoreet sapien consectetur. Felis egestas egestas amet aliquam sit euismod. Pellentesque neque, sed ut volutpat. Ullamcorper in at nulla dignissim.",
-        },
-        {
-            img: "./images/5.jpg",
-            name: "Luke Maxwell",
-            occupation: "System Architect",
-            testimonial: "Magna egestas aliquet ut integer non. Sed diam enim nibh sit. Aliquam hvodrm okfdwlv onzaq laoreet aenean metus nibh eu scelerisque.",
-        },
-    ];
+const Carousel = ({ position, slides }) => {
+  // Determine breakpoints and card sizes
+  const isExtraLarge = window.innerWidth >= 1600;
+  const isLarge = window.innerWidth >= 1200 && window.innerWidth < 1600;
+  const isMedium = window.innerWidth >= 768 && window.innerWidth < 1200;
+  const isSmall = window.innerWidth < 768;
 
-    return (
-        <main id="carousel">
-            {slides.map((slide, index) => {
-                const r = position - (index + 1);
-                const abs = Math.abs(r);
-                return (
-                    <div
-                        key={index}
-                        className="item"
-                        style={{
-                            transform: `rotateY(${r * 0}deg) translateX(${r * -380}px)`,
-                            zIndex: slides.length - abs,
-                            opacity: abs > 2 ? 0 : 1,
-                            transition: "all 0.25s linear",
-                        }}
-                    >
+  let cardWidth = 400;
+  let gap = 30;
 
-                        <p className="testimonial">{slide.testimonial}</p>
-                        <div className="user">
-                            <img src={slide.img} />
-                            <div className="user_inner" style={{ backgroundColor: "white" }}>
-                                <p className="stp">{slide.name}</p>
-                                <p className="ndp">{slide.occupation}</p>
-                            </div>
-                        </div>
-                    </div>
-                );
-            })}
-        </main>
-    );
+  if (isExtraLarge) {
+    // Extra Large: 4 cards
+    cardWidth = 350;
+    gap = 20;
+  } else if (isLarge) {
+    // Large: 3 cards
+    cardWidth = 400;
+    gap = 30;
+  } else if (isMedium) {
+    // Medium: 2 cards
+    cardWidth = 400;
+    gap = 30;
+  } else if (isSmall) {
+    // Small: 1 card. We'll rely on percentage-based transforms
+    cardWidth = 0;
+    gap = 0;
+  }
+
+  const translateXValue = isSmall
+    ? (position - 1) * 100    // Move in 100% increments for small screens
+    : (position - 1) * (cardWidth + gap);
+
+  return (
+    <div className="carousel-wrapper">
+      <div className="carousel-container">
+        <div
+          className="carousel-track"
+          style={{ 
+            transform: isSmall
+              ? `translateX(-${translateXValue}%)`
+              : `translateX(-${translateXValue}px)`
+          }}
+        >
+          {slides.map((slide, index) => (
+            <div className="carousel-item" key={index}>
+              <p className="testimonial">{slide.testimonial}</p>
+              <div className="user">
+                <img src={slide.img} alt={slide.name} />
+                <div className="user_inner">
+                  <p className="stp">{slide.name}</p>
+                  <p className="ndp">{slide.occupation}</p>
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+  );
 };
 
 export default Carousel;
